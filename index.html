@@ -2,21 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Scan Me</title>
+  <title>Secure QR Code</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
       text-align: center;
       margin-top: 100px;
     }
-    img {
-      max-width: 300px;
-      height: auto;
+    #qrcode-section {
+      display: none;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <h1>Scan this QR Code</h1>
-  <img src="qrcode.png" alt="QR Code">
+  <h2>Enter Password to Access QR Code</h2>
+  <input type="password" id="password" placeholder="Enter password">
+  <button onclick="checkPassword()">Submit</button>
+
+  <div id="qrcode-section">
+    <h3>Here is your QR Code</h3>
+    <img src="qrcode.png" alt="QR Code" width="250">
+  </div>
+
+  <script>
+    function checkPassword() {
+      const correctPassword = "061299"; // change this to your desired password
+      const input = document.getElementById("password").value;
+
+      if (input === correctPassword) {
+        document.getElementById("qrcode-section").style.display = "block";
+      } else {
+        alert("Incorrect password. Try again.");
+      }
+    }
+  </script>
 </body>
 </html>
